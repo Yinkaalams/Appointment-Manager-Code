@@ -1,0 +1,34 @@
+/*
+GROUP 18 MEMBERS
+-EHINOMHEN OSEZUAH
+-YINUS ALAMUTU
+-THE PROJECT ON THE HAIR SALON APPOINTMENT MANAGER
+*/
+
+/*
+* *********GROUP 18******************
+THIS FILE CONTAINS THE ROLES PLAYED BY EHINOMHEN OSEZUAH AND YINUS ALAMUTU
+
+ -What Ehinomhen Osezuah Did
+
+
+
+
+
+
+
+
+
+
+ -What Yinus Alamutu did
+
+
+
+
+
+
+
+
+
+
+*/

@@ -18,12 +18,21 @@
     <ClCompile Include="Source.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PrintMenu.c">
+    <ClCompile Include="Appointment.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="README.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Date.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PrintMenu.h">
+    <ClInclude Include="Appointment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Date.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
