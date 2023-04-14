@@ -76,12 +76,7 @@ int main(void)
                 break;
             }
         }
-        if (choice == EMPTYNUM)
-        {
-            printf("You have entered a wrong input\n");
-            menuShown = EMPTYNUM;
-
-        }
+      
     }
 
     saveAppointments();
