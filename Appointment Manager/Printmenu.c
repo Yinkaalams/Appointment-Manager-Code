@@ -28,7 +28,7 @@ int showMenuandGetinput()
 
 	// Get user input 
 	int choice;
-	scanf("%d", &choice);
+	if ((scanf("%d", &choice) == 1 ))
 	return choice;
 	
 }
