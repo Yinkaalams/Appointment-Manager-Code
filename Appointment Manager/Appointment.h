@@ -6,6 +6,7 @@
 #define EMPTYNUM 0
 #define NUMONE 1
 #define NUMTEN 10
+#define MAXNUM 100
 //prog71985 - winter23 - Group Project ON Appointment Manager - Group 18 - Ehinomhen Osezuah and Yinus Alamutu
 // Appointment Interface
 // Structure to store appointment 

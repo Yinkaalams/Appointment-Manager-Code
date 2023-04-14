@@ -77,7 +77,7 @@ void setTime(int index, char time[]) {
 }
 
 // Function to enter appointment 
-void enterAppointment()
+void enterAppointment(void)
 {
 	// Get user input for appointment 
 	char description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS];
@@ -142,7 +142,7 @@ void enterAppointment()
 }
 
 // Function to delete appointment 
-void deleteAppointment()
+void deleteAppointment(void)
 {
 	// Get user input for deleting appointment 
 	char description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS];
@@ -198,7 +198,7 @@ void deleteAppointment()
 }
 
 // Function to update appointment 
-void updateAppointment()
+void updateAppointment(void)
 {
 	// Get user input for updating appointment 
 	char description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS];
@@ -271,7 +271,7 @@ void updateAppointment()
 }
 
 // Function to display single appointment 
-void displayAppointment()
+void displayAppointment(void)
 {
 	// Get user input for displaying appointment 
 	char description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS];
@@ -305,7 +305,7 @@ void displayAppointment()
 
 
 // Function to display range of appointments 
-void displayRangeAppointments()
+void displayRangeAppointments(void)
 {
 	// Get user input for range 
 	DATE start = { EMPTYNUM };
@@ -410,7 +410,7 @@ void displayRangeAppointments()
 }
 
 // Function to display all appointments 
-void displayAllAppointments()
+void displayAllAppointments(void)
 {
 	// Display all appointments 
 	if (total_appointments == EMPTYNUM)
@@ -438,7 +438,7 @@ void displayAllAppointments()
 }
 
 // Function to search appointment 
-void searchAppointment()
+void searchAppointment(void)
 {
 	// Get user input for searching appointment 
 	char description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS];
@@ -470,7 +470,7 @@ void searchAppointment()
 }
 
 // Function to save appointments to disk 
-void saveAppointments()
+void saveAppointments(void)
 {
 	// Open file 
 	FILE* fp;
@@ -490,7 +490,7 @@ void saveAppointments()
 }
 
 // Function to load appointments from disk 
-void loadAppointments()
+void loadAppointments(void)
 {
 	FILE* fp = fopen("appointments.dat", "rb");
 	if (fp == NULL)

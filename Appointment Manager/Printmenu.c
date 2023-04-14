@@ -3,6 +3,7 @@
 #include "Utils.h"
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #define MAXNUM 100
 #define NUMONE 1
 #define EMPTYNUM 0
@@ -27,26 +28,3 @@ void printmenu(void)
 	printf("Enter your choice: ");
 }
 
-// Function to show menu 
-int showMenuandGetinput(void)
-{
-    int choice = EMPTYNUM;
-    char input[MAXNUM];
-    int input_length = EMPTYNUM;
-
-    do {
-        printmenu();
-        fgets(input, sizeof(input), stdin);
-        removeTrailingNewline(input);
-        input_length = strlen(input);
-        if (input_length == NUMONE && input[EMPTYNUM] >= '0' && input[EMPTYNUM] <= '8') {
-            choice = input[EMPTYNUM] - '0';
-            break;
-        }
-        else {
-            printf("Invalid option\n");
-        }
-    } while (NUMONE);
-
-    return choice;
-}
