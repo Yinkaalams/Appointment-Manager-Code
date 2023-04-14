@@ -36,14 +36,13 @@ void searchAppointment();
 void saveAppointments();
 void loadAppointments();
 
-int showMenuandGetinput();
-void setDay(int, int);
-
 void setMonth(int, int);
 void setYear(int, int);
 
 int getDay(int);
 int getMonth(int);
+
+void setDay(int, int);
 int getYear(int);
 
 
