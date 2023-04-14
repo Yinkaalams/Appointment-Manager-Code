@@ -3,21 +3,16 @@
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h> 
-
-/*
-GROUP 18 MEMBERS
--EHINOMHEN OSEZUAH
--YINUS ALAMUTU
--THE PROJECT ON THE HAIR SALON APPOINTMENT MANAGER
-*/
-
+//prog71985 - winter23 - Group Project ON Appointment Manager - Group 18 - Ehinomhen Osezuah and Yinus Alamutu
+//Program to be for an Appointment Manager 
 // Main function 
-int main()
+int main(void)
 {
+	loadAppointments();
 	int choice;
 	do
 	{
-		choice = showMenu();
+		choice = showMenuandGetinput();
 		switch (choice)
 		{
 		case 1:
@@ -44,12 +39,6 @@ int main()
 		case 8:
 			showCalendar();
 			break;
-		case 9:
-			saveAppointments();
-			break;
-		case 10:
-			loadAppointments();
-			break;
 		case 0:
 			printf("Exiting...\n");
 			break;
@@ -57,7 +46,7 @@ int main()
 			printf("Invalid option\n");
 			break;
 		}
-	} while (choice != 0);
-
+	} while (choice != EMPTYNUM);
+          saveAppointments();
 	return 0;
 }

@@ -129,12 +129,14 @@
   <ItemGroup>
     <ClCompile Include="Appointment.c" />
     <ClCompile Include="Date.c" />
+    <ClCompile Include="Printmenu.c" />
     <ClCompile Include="README.c" />
     <ClCompile Include="Source.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Appointment.h" />
     <ClInclude Include="Date.h" />
+    <ClInclude Include="Printmenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

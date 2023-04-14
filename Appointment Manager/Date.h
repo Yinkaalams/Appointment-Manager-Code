@@ -1,13 +1,13 @@
 #pragma once
-/*
-GROUP 18 MEMBERS
--EHINOMHEN OSEZUAH
--THE PROJECT ON THE HAIR SALON APPOINTMENT MANAGER
--YINUS ALAMUTU
-*/
+//prog71985 - winter23 - Group Project ON Appointment Manager - Group 18 - Ehinomhen Osezuah and Yinus Alamutu
+// Date Interface
 
 // Structure to store date 
-
+#define NUMONE 1
+#define EMPTYNUM 0
+#define DAYSINAWEEK 7
+#define NEGATIVENUM -1
+#define STARTYEAR 1900
 typedef struct date
 {
 	int day;

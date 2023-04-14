@@ -1,13 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Date.h"
+#include <stdio.h>
 #include <time.h> 
-
-/*
-GROUP 18 MEMBERS
--EHINOMHEN OSEZUAH
--YINUS ALAMUTU
--THE PROJECT ON THE HAIR SALON APPOINTMENT MANAGER
-*/
+//Date Implementation To Show Earliest Day A Customer Can Book Appointment 
+//prog71985 - winter23 - Group Project ON Appointment Manager - Group 18 - Ehinomhen Osezuah and Yinus Alamutu
 
 // Function to show calendar 
 void showCalendar()
@@ -22,36 +18,36 @@ void showCalendar()
 	}
 
 	int day = time_info->tm_mday;
-	int month = time_info->tm_mon + 1;
-	int year = time_info->tm_year + 1900;
+	int month = time_info->tm_mon + NUMONE;
+	int year = time_info->tm_year + STARTYEAR;
 
 	// Print header 
-	printf("\nCalendar - %d/%d/%d\n\n", day, month, year);
+	printf("\nToday's Date - %d/%d/%d\n\n", day, month, year);
 	printf(" Sun  Mon  Tue  Wed  Thu  Fri  Sat\n");
 
 	// Calculate starting day and number of days in month
-	time_info->tm_mday = 1;
-	time_info->tm_hour = 0;
-	time_info->tm_min = 0;
-	time_info->tm_sec = 0;
-	time_info->tm_isdst = -1;
+	time_info->tm_mday = NUMONE;
+	time_info->tm_hour = EMPTYNUM;
+	time_info->tm_min = EMPTYNUM;
+	time_info->tm_sec = EMPTYNUM;
+	time_info->tm_isdst = NEGATIVENUM;
 	time_t start_of_month = mktime(time_info);
 	time_info = localtime(&start_of_month);
 	int start_day = time_info->tm_wday;
-	int num_days = 0;
-	while (time_info->tm_mon == month - 1) {
+	int num_days = EMPTYNUM;
+	while (time_info->tm_mon == month - NUMONE) {
 		num_days++;
 		start_of_month += 86400; // add one day (in seconds) to the timestamp
 		time_info = localtime(&start_of_month);
 	}
 
 	// Print calendar 
-	for (int i = 0; i < start_day; i++)
+	for (int i = EMPTYNUM; i < start_day; i++)
 		printf("     ");
-	for (int i = 1; i <= num_days; i++)
+	for (int i = NUMONE; i <= num_days; i++)
 	{
 		printf("%4d ", i);
-		if ((start_day + i) % 7 == 0)
+		if ((start_day + i) % DAYSINAWEEK == EMPTYNUM)
 			printf("\n");
 	}
 	printf("\n");
