@@ -1,2 +1,3 @@
-Hair 0 0 0 9PM
-Teeth 0 0 0 2PM
+facials 18 4 2023 3pm
+bath 18 4 2023 11am
+eat 19 4 2023 5pm

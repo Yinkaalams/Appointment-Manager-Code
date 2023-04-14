@@ -1,4 +1,6 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdbool.h>
 //prog71985 - winter23 - Group Project ON Appointment Manager - Group 18 - Ehinomhen Osezuah and Yinus Alamutu
 //Print Menu Implementation
 void printmenu(void)
@@ -17,4 +19,16 @@ void printmenu(void)
 	printf("8. Show Earliest Date For Appointment and Days In the Month\n");
 	printf("0. Exit\n");
 	printf("Enter your choice: ");
+}
+
+// Function to show menu 
+int showMenuandGetinput()
+{
+	printmenu();
+
+	// Get user input 
+	int choice;
+	scanf("%d", &choice);
+	return choice;
+	
 }

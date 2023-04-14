@@ -20,7 +20,7 @@ void setYear(int index, int year) {
 	appointments[index].date.year = year;
 }
 
-// Getter functions for date
+// Getter functions for date for appointment
 int getDay(int index) {
 	return appointments[index].date.day;
 }
@@ -75,38 +75,43 @@ void enterAppointment()
 	char description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS];
 	printf("Enter your appointment details\n");
 	printf("Description: ");
-	scanf("%s", description);
-
-	int day, month, year;
-	printf("Enter date\n");
-	printf("Day: ");
-	scanf("%d", &day);
-
-	printf("Month: ");
-	scanf("%d", &month);
-
-	printf("Year: ");
-	scanf("%d", &year);
-
-	char* time = (char*)malloc(10 * sizeof(char)); 
-	if (time == NULL) // Checking if allocation failed
+	if ((scanf("%s", description) > 0))
 	{
-		printf("Error: Memory allocation failed\n");
-		return;
+		int day, month, year;
+		printf("Enter date\n");
+		printf("Day: ");
+		if ((scanf("%d", &day) == 1))
+		{
+			printf("Month: ");
+			if ((scanf("%d", &month) == 1))
+			{
+				printf("Year: ");
+				if ((scanf("%d", &year) == 1))
+				{
+					char* time = (char*)malloc(10 * sizeof(char));
+					if (time == NULL) // Checking if allocation failed
+					{
+						printf("Error: Memory allocation failed\n");
+						return;
+					}
+
+					printf("Time: ");
+					if ((scanf("%s", time) > 0))
+					{
+						// Set appointment 
+						setAppointment(description, day, month, year, time);
+
+						// Increment total appointments 
+						total_appointments++;
+
+						printf("Appointment Successfully Booked\n");
+
+						free(time); // Free allocated memory
+					}
+				}
+			}
+		}
 	}
-
-	printf("Time: ");
-	scanf("%s", time);
-
-	// Set appointment 
-	setAppointment(description, day, month, year, time);
-
-	// Increment total appointments 
-	total_appointments++;
-
-	printf("Appointment Successfully Booked\n");
-
-	free(time); // Free allocated memory
 }
 
 // Function to delete appointment 
@@ -115,49 +120,51 @@ void deleteAppointment()
 	// Get user input for deleting appointment 
 	char description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS];
 	printf("Enter description for appointment to delete: ");
-	scanf("%s", description);
-	description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS - NUMONE] = '\0';
-	// Search for appointment 
-	int index = NEGATIVENUM;
-	for (int i = EMPTYNUM; i < total_appointments; i++)
+	if ((scanf("%s", description) > 0))
 	{
-		if (strcmp(description, getDescription(i)) == EMPTYNUM)
+		description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS - NUMONE] = '\0';
+		// Search for appointment 
+		int index = NEGATIVENUM;
+		for (int i = EMPTYNUM; i < total_appointments; i++)
 		{
-			index = i;
-			break;
-		}
-	}
-
-	// If appointment is found 
-	if (index != NEGATIVENUM)
-	{
-		// Shift remaining appointments one step forward 
-		for (int i = index; i < total_appointments - NUMONE; i++)
-			appointments[i] = appointments[i + NUMONE];
-
-		// Decrement total appointments 
-		total_appointments--;
-
-		// Open the file for writing in binary mode
-		FILE* fp = fopen("appointments.dat", "wb");
-		if (fp == NULL)
-		{
-			printf("Error opening file\n");
-			return;
+			if (strcmp(description, getDescription(i)) == EMPTYNUM)
+			{
+				index = i;
+				break;
+			}
 		}
 
-		// Write the updated appointments array to the file
-		fwrite(appointments, sizeof(APPOINTMENT), total_appointments, fp);
+		// If appointment is found 
+		if (index != NEGATIVENUM)
+		{
+			// Shift remaining appointments one step forward 
+			for (int i = index; i < total_appointments - NUMONE; i++)
+				appointments[i] = appointments[i + NUMONE];
 
-		// Close the file
-		fclose(fp);
+			// Decrement total appointments 
+			total_appointments--;
 
-		printf("Appointment deleted successfully\n");
+			// Open the file for writing in binary mode
+			FILE* fp = fopen("appointments.dat", "wb");
+			if (fp == NULL)
+			{
+				printf("Error opening file\n");
+				return;
+			}
+
+			// Write the updated appointments array to the file
+			fwrite(appointments, sizeof(APPOINTMENT), total_appointments, fp);
+
+			// Close the file
+			fclose(fp);
+
+			printf("Appointment deleted successfully\n");
+		}
+
+		// If appointment not found 
+		else
+			printf("Appointment not found\n");
 	}
-
-	// If appointment not found 
-	else
-		printf("Appointment not found\n");
 }
 
 // Function to update appointment 
@@ -166,45 +173,53 @@ void updateAppointment()
 	// Get user input for updating appointment 
 	char description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS];
 	printf("Enter description for appointment to update: ");
-	scanf("%s", description);
-	description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS - NUMONE] = '\0';
-	// Search for appointment 
-	int index = NEGATIVENUM;
-	for (int i = EMPTYNUM; i < total_appointments; i++)
-		if (strcmp(description, getDescription(i)) == EMPTYNUM)
-			index = i;
-
-	// If appointment is found 
-	if (index != NEGATIVENUM)
+	if ((scanf("%s", description) > 0))
 	{
-		// Get user input for appointment 
-		printf("Enter your appointment details\n");
-		printf("Description: ");
-		char* customerChoice = getDescription(index);
-		scanf("%s", customerChoice);
+		description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS - NUMONE] = '\0';
+		// Search for appointment 
+		int index = NEGATIVENUM;
+		for (int i = EMPTYNUM; i < total_appointments; i++)
+			if (strcmp(description, getDescription(i)) == EMPTYNUM)
+				index = i;
 
-		printf("Enter date\n");
-		printf("Day: ");
-		int customerDate = getDay(index);
-		scanf("%d", &customerDate);
+		// If appointment is found 
+		if (index != NEGATIVENUM)
+		{
+			// Get user input for appointment 
+			printf("Enter your appointment details\n");
+			printf("Description: ");
+			char* customerChoice = getDescription(index);
+			if ((scanf("%s", customerChoice) > 0))
+			{
+				printf("Enter date\n");
+				printf("Day: ");
+				int customerDate = getDay(index);
+				if ((scanf("%d", &customerDate) == 1))
+				{
+					printf("Month: ");
+					int customerMonth = getMonth(index);
+					if ((scanf("%d", &customerMonth) == 1))
+					{
+						printf("Year: ");
+						int customerYear = getYear(index);
+						if ((scanf("%d", &customerYear) == 1))
+						{
+							printf("Time: ");
+							char* customerTime = getTime(index);
+							if ((scanf("%s", customerTime) > 0))
+							{
+								printf("Appointment updated successfully\n");
+							}
+						}
+					}
+				}
+			}
+		}
 
-		printf("Month: ");
-		int customerMonth = getMonth(index);
-		scanf("%d", &customerMonth);
-
-		printf("Year: ");
-		int customerYear = getYear(index);
-		scanf("%d", &customerYear);
-
-		printf("Time: \n");
-		char* customerTime = getTime(index);
-		scanf("%s", customerTime);
-		printf("Appointment updated successfully\n");
+		// If appointment not found 
+		else
+			printf("Appointment not found\n");
 	}
-
-	// If appointment not found 
-	else
-		printf("Appointment not found\n");
 }
 
 // Function to display single appointment 
@@ -213,27 +228,29 @@ void displayAppointment()
 	// Get user input for displaying appointment 
 	char description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS];
 	printf("Enter description for appointment to display: ");
-	scanf("%s", description);
-	description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS - NUMONE] = '\0';
-	// Search for appointment 
-	int index = NEGATIVENUM;
-	for (int i = EMPTYNUM; i < total_appointments; i++)
-		if (strcmp(description, getDescription(i)) == EMPTYNUM)
-			index = i;
-
-	// If appointment is found 
-	if (index != NEGATIVENUM)
+	if ((scanf("%s", description) > 0))
 	{
-		printf("Your appointment is\n");
-		printf("Description: %s\n", getDescription(index));
-		DATE date = getDate(index);
-		printf("Date: %d/%d/%d\n", date.day, date.month, date.year);
-		printf("Time: %s\n", getTime(index));
-	}
+		description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS - NUMONE] = '\0';
+		// Search for appointment 
+		int index = NEGATIVENUM;
+		for (int i = EMPTYNUM; i < total_appointments; i++)
+			if (strcmp(description, getDescription(i)) == EMPTYNUM)
+				index = i;
 
-	// If appointment not found 
-	else
-		printf("Appointment not found\n");
+		// If appointment is found 
+		if (index != NEGATIVENUM)
+		{
+			printf("Your appointment is\n");
+			printf("Description: %s\n", getDescription(index));
+			DATE date = getDate(index);
+			printf("Date: %d/%d/%d\n", date.day, date.month, date.year);
+			printf("Time: %s\n", getTime(index));
+		}
+
+		// If appointment not found 
+		else
+			printf("Appointment not found\n");
+	}
 }
 
 // Function to display range of appointments 
@@ -246,66 +263,72 @@ void displayRangeAppointments()
 
 	printf("Day: ");
 	int StartDay_Choice = start.day;
-	scanf("%d", &StartDay_Choice);
-
-	printf("Month: ");
-	int StartMonth_Choice = start.month;
-	scanf("%d", &StartMonth_Choice);
-
-	printf("Year: ");
-	int StartYear_Choice = start.year;
-	scanf("%d", &StartYear_Choice);
-
-	printf("Enter end date\n");
-
-	printf("Day: ");
-	int EndDay_Choice = end.day;
-	scanf("%d", &EndDay_Choice);
-
-	printf("Month: ");
-	int EndMonth_Choice = end.month;
-	scanf("%d", &EndMonth_Choice);
-
-	printf("Year: ");
-	int EndYear_Choice = end.year;
-	scanf("%d", &EndYear_Choice);
-
-	// Display appointments in the range 
-	int found = EMPTYNUM;
-	for (int i = EMPTYNUM; i < total_appointments; i++)
+	if ((scanf("%d", &StartDay_Choice) == 1))
 	{
-		// Compare dates 
-		if ((getYear(i) > start.year &&
-			getYear(i) < end.year) ||
-
-			((getYear(i) == start.year ||
-				getYear(i) == end.year) &&
-
-				(getMonth(i) > start.month &&
-					getMonth(i) < end.month)) ||
-
-			((getYear(i) == start.year ||
-				getYear(i) == end.year) &&
-
-				(getMonth(i) == start.month ||
-					getMonth(i) == end.month) &&
-
-				(getDay(i) >= start.day &&
-					getDay(i) <= end.day)))
+		printf("Month: ");
+		int StartMonth_Choice = start.month;
+		if ((scanf("%d", &StartMonth_Choice) == 1))
 		{
-			found = NUMONE;
-			printf("Your appointment is\n");
-			printf("Description: %s\n", getDescription(i));
-			printf("Date: %d / %d /%d \n", getDay(i),
-				getMonth(i),
-				getYear(i));
-			printf("Time: %s\n", getTime(i));
+			printf("Year: ");
+			int StartYear_Choice = start.year;
+			if ((scanf("%d", &StartYear_Choice) == 1))
+			{
+				printf("Enter end date\n");
+
+				printf("Day: ");
+				int EndDay_Choice = end.day;
+				if ((scanf("%d", &EndDay_Choice) == 1))
+				{
+					printf("Month: ");
+					int EndMonth_Choice = end.month;
+					if ((scanf("%d", &EndMonth_Choice) == 1))
+					{
+						printf("Year: ");
+						int EndYear_Choice = end.year;
+						if ((scanf("%d", &EndYear_Choice) == 1))
+						{
+							// Display appointments in the range 
+							int found = EMPTYNUM;
+							for (int i = EMPTYNUM; i < total_appointments; i++)
+							{
+								// Compare dates 
+								if ((getYear(i) > start.year &&
+									getYear(i) < end.year) ||
+
+									((getYear(i) == start.year ||
+										getYear(i) == end.year) &&
+
+										(getMonth(i) > start.month &&
+											getMonth(i) < end.month)) ||
+
+									((getYear(i) == start.year ||
+										getYear(i) == end.year) &&
+
+										(getMonth(i) == start.month ||
+											getMonth(i) == end.month) &&
+
+										(getDay(i) >= start.day &&
+											getDay(i) <= end.day)))
+								{
+									found = NUMONE;
+									printf("Your appointment is\n");
+									printf("Description: %s\n", getDescription(i));
+									printf("Date: %d / %d /%d \n", getDay(i),
+										getMonth(i),
+										getYear(i));
+									printf("Time: %s\n", getTime(i));
+								}
+							}
+
+							// If appointment not found 
+							if (!found)
+								printf("No appointment found in the range\n");
+						}
+					}
+				}
+			}
 		}
 	}
-
-	// If appointment not found 
-	if (!found)
-		printf("No appointment found in the range\n");
 }
 
 
@@ -343,25 +366,27 @@ void searchAppointment()
 	// Get user input for searching appointment 
 	char description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS];
 	printf("Enter description for appointment to search: ");
-	scanf("%s", description);
-	description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS - NUMONE] = '\0';
-	// Search for appointment 
-	int found = EMPTYNUM;
-	for (int i = EMPTYNUM; i < total_appointments; i++)
-		if (strcmp(description, getDescription(i)) == EMPTYNUM)
-		{
-			found = NUMONE;
-			printf("Your appointment is\n");
-			printf("Description: %s\n", getDescription(i));
-			printf("Date: %d/%d/%d\n", getDay(i),
-				getMonth(i),
-				getYear(i));
-			printf("Time: %s\n", getTime(i));
-		}
+	if ((scanf("%s", description) > 0))
+	{
+		description[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS - NUMONE] = '\0';
+		// Search for appointment 
+		int found = EMPTYNUM;
+		for (int i = EMPTYNUM; i < total_appointments; i++)
+			if (strcmp(description, getDescription(i)) == EMPTYNUM)
+			{
+				found = NUMONE;
+				printf("Your appointment is\n");
+				printf("Description: %s\n", getDescription(i));
+				printf("Date: %d/%d/%d\n", getDay(i),
+					getMonth(i),
+					getYear(i));
+				printf("Time: %s\n", getTime(i));
+			}
 
-	// If appointment not found 
-	if (!found)
-		printf("Appointment not found\n");
+		// If appointment not found 
+		if (!found)
+			printf("Appointment not found\n");
+	}
 }
 
 // Function to save appointments to disk 
@@ -403,15 +428,3 @@ void loadAppointments()
 	fclose(fp);
 }
 
-// Function to show menu 
-int showMenuandGetinput()
-{
-	printmenu();
-
-	// Get user input 
-	int choice;
-	scanf("%d", &choice);
-
-	// Return user input 
-	return choice;
-}

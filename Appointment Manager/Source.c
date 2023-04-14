@@ -10,6 +10,7 @@ int main(void)
 {
 	loadAppointments();
 	int choice;
+
 	do
 	{
 		choice = showMenuandGetinput();
