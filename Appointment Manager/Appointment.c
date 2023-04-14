@@ -97,7 +97,7 @@ void enterAppointment()
 				if (scanf("%d", &year) == NUMONE)
 
 				{
-					char* time = (char*)malloc(10 * sizeof(char));
+					char* time = (char*)malloc(NUMTEN * sizeof(char));
 					if (time == NULL) // Checking if allocation failed
 					{
 						printf("Error: Memory allocation failed\n");
