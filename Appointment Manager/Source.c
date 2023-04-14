@@ -6,7 +6,6 @@
 #include <stdio.h> 
 #include <ctype.h>
 #include <stdlib.h> 
-#include <stdbool.h>
 #include <string.h> 
 //prog71985 - winter23 - Group Project ON Appointment Manager - Group 18 - Ehinomhen Osezuah and Yinus Alamutu
 //Program to be for an Appointment Manager 
