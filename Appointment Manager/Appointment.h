@@ -16,11 +16,11 @@ typedef struct appointment
 	char time[TIME_CUSTOMER_CHOOSES_TO_ARRIVE];
 }APPOINTMENT;
 
-// Array to store appointments and Variable that needs to be accessed by every function
-// Without these global variables, data cannot be shared between the different functions
+// Array to store appointments and Variable that needs to be accessed by every function 
 APPOINTMENT appointments[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS];
 int total_appointments;
 // Functions interface
+void printmenu(void);
 void enterAppointment();
 
 void deleteAppointment();
