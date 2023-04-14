@@ -3,7 +3,6 @@
 #include "Utils.h"
 #include <stdio.h>
 #include <stdbool.h>
-#include <stdlib.h>
 #define MAXNUM 100
 #define NUMONE 1
 #define EMPTYNUM 0
