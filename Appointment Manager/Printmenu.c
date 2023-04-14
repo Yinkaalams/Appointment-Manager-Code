@@ -1,4 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
+#include "Printmenu.h"
+#include "Utils.h"
 #include <stdio.h>
 #include <stdbool.h>
 #define MAXNUM 100
@@ -35,9 +37,9 @@ int showMenuandGetinput(void)
     do {
         printmenu();
         fgets(input, sizeof(input), stdin);
+        removeTrailingNewline(input);
         input_length = strlen(input);
-        //Removing Trailing New Line
-        if (input_length == NUMTWO && input[EMPTYNUM] >= '0' && input[EMPTYNUM] <= '8') {
+        if (input_length == NUMONE && input[EMPTYNUM] >= '0' && input[EMPTYNUM] <= '8') {
             choice = input[EMPTYNUM] - '0';
             break;
         }
