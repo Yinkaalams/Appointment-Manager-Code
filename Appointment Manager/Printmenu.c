@@ -1,7 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdbool.h>
-#define MAXNUM 1
+#define MAXNUM 100
+#define NUMONE 1
+#define EMPTYNUM 0
+#define NUMTWO 2
 //prog71985 - winter23 - Group Project ON Appointment Manager - Group 18 - Ehinomhen Osezuah and Yinus Alamutu
 //Print Menu Implementation
 void printmenu(void)
@@ -25,11 +28,23 @@ void printmenu(void)
 // Function to show menu 
 int showMenuandGetinput(void)
 {
-	printmenu();
+    int choice = EMPTYNUM;
+    char input[MAXNUM];
+    int input_length = EMPTYNUM;
 
-	// Get user input 
-	int choice;
-	if ((scanf("%d", &choice) == MAXNUM))
-	return choice;
-	
+    do {
+        printmenu();
+        fgets(input, sizeof(input), stdin);
+        input_length = strlen(input);
+        //Removing Trailing New Line
+        if (input_length == NUMTWO && input[EMPTYNUM] >= '0' && input[EMPTYNUM] <= '8') {
+            choice = input[EMPTYNUM] - '0';
+            break;
+        }
+        else {
+            printf("Invalid option\n");
+        }
+    } while (NUMONE);
+
+    return choice;
 }

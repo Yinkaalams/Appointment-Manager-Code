@@ -87,13 +87,13 @@ void enterAppointment()
 	{
 		int day, month, year;
 		printf("Enter date\n");
-		printf("Day: ");
+		printf("Day(This should be a digit): ");
 		if (scanf("%d", &day) == NUMONE)
 		{
-			printf("Month: ");
+			printf("Month(This should be a digit): ");
 			if (scanf("%d", &month) == NUMONE)
 			{
-				printf("Year: ");
+				printf("Year(This should be a digit): ");
 				if (scanf("%d", &year) == NUMONE)
 
 				{
@@ -221,13 +221,13 @@ void updateAppointment()
 		if (scanf("%s", customerChoice) == NUMONE)
 		{
 			printf("Enter date\n");
-			printf("Update Day: ");
+			printf("Update Day (This should be a digit): ");
 			int customerDate = getDay(index);
 			if (scanf("%d", &customerDate) == NUMONE)
 
 			{
 				setDay(index, customerDate);
-				printf("Month: ");
+				printf("Update Month(This should be a digit) : ");
 				int customerMonth = getMonth(index);
 				if (scanf("%d", &customerMonth) == NUMONE)
 

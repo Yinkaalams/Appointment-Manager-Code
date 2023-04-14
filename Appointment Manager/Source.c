@@ -41,14 +41,11 @@ int main(void)
 		case 8:
 			showEarliestDate();
 			break;
-		case 0:
-			printf("Exiting...\n");
-			break;
 		default:
 			printf("Invalid option\n");
 			break;
 		}
-	} while (choice != EMPTYNUM);
+	} while (choice != EMPTYNUM );
           saveAppointments();
 	return 0;
 }
