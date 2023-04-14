@@ -38,35 +38,35 @@ int main(void)
             {
             case 1:
                 enterAppointment();
-               
+                menuShown = EMPTYNUM; // to print menu again after invalid input
                 break;
             case 2:
                 deleteAppointment();
-               
+                menuShown = EMPTYNUM;
                 break;
             case 3:
                 updateAppointment();
-               
+                menuShown = EMPTYNUM;
                 break;
             case 4:
                 displayAppointment();
-               
+                menuShown = EMPTYNUM;
                 break;
             case 5:
                 displayRangeAppointments();
-              
+                menuShown = EMPTYNUM;
                 break;
             case 6:
                 displayAllAppointments();
-               
+                menuShown = EMPTYNUM;
                 break;
             case 7:
                 searchAppointment();
-               
+                menuShown = EMPTYNUM;
                 break;
             case 8:
                 showEarliestDate();
-               
+                menuShown = EMPTYNUM;
                 break;
             case 0:
                 printf("Exiting....\n");
