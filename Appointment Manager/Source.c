@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "Appointment.h"
+#include "Date.h"
 #include <stdio.h> 
 #include <stdlib.h> 
 #include <string.h> 
@@ -38,7 +39,7 @@ int main(void)
 			searchAppointment();
 			break;
 		case 8:
-			showCalendar();
+			showEarliestDate();
 			break;
 		case 0:
 			printf("Exiting...\n");

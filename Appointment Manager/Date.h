@@ -9,6 +9,7 @@
 #define DAYSINAWEEK 7
 #define NEGATIVENUM -1
 #define STARTYEAR 1900
+#define NUMBEROFSECONDSINADAY 86400
 typedef struct date
 {
 	int day;
@@ -16,4 +17,4 @@ typedef struct date
 	int year;
 }DATE;
 
-void showCalendar();
+void showEarliestDate();

@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdbool.h>
+#define MAXNUM 1
 //prog71985 - winter23 - Group Project ON Appointment Manager - Group 18 - Ehinomhen Osezuah and Yinus Alamutu
 //Print Menu Implementation
 void printmenu(void)
@@ -22,13 +23,13 @@ void printmenu(void)
 }
 
 // Function to show menu 
-int showMenuandGetinput()
+int showMenuandGetinput(void)
 {
 	printmenu();
 
 	// Get user input 
 	int choice;
-	if ((scanf("%d", &choice) == 1 ))
+	if ((scanf("%d", &choice) == MAXNUM))
 	return choice;
 	
 }

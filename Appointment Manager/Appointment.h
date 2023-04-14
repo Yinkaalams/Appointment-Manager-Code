@@ -15,10 +15,10 @@ typedef struct appointment
 	char time[TIME_CUSTOMER_CHOOSES_TO_ARRIVE];
 }APPOINTMENT;
 
-// Array to store appointments 
+// Array to store appointments and Variable that needs to be accessed by every function 
 APPOINTMENT appointments[SIZE_OF_THE_SERVICE_CUSTOMER_WANTS];
 int total_appointments;
-
+// Functions interface
 void printmenu(void);
 void enterAppointment();
 
@@ -34,7 +34,7 @@ void searchAppointment();
 void saveAppointments();
 void loadAppointments();
 
-int showMenu();
+int showMenuandGetinput();
 void setDay(int, int);
 
 void setMonth(int, int);

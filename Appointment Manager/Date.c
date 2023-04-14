@@ -5,8 +5,8 @@
 //Date Implementation To Show Earliest Day A Customer Can Book Appointment 
 //prog71985 - winter23 - Group Project ON Appointment Manager - Group 18 - Ehinomhen Osezuah and Yinus Alamutu
 
-// Function to show calendar 
-void showCalendar()
+// Function to show Earliest Date ro book appointment and Number of days in that month
+void showEarliestDate()
 {
 	// Print calendar 
 	time_t current_time = time(NULL);
@@ -22,7 +22,7 @@ void showCalendar()
 	int year = time_info->tm_year + STARTYEAR;
 
 	// Print header 
-	printf("\nToday's Date - %d/%d/%d\n\n", day, month, year);
+	printf("\nEarliest's Date - %d/%d/%d\n\n", day, month, year);
 	printf(" Sun  Mon  Tue  Wed  Thu  Fri  Sat\n");
 
 	// Calculate starting day and number of days in month
@@ -37,7 +37,7 @@ void showCalendar()
 	int num_days = EMPTYNUM;
 	while (time_info->tm_mon == month - NUMONE) {
 		num_days++;
-		start_of_month += 86400; // add one day (in seconds) to the timestamp
+		start_of_month += NUMBEROFSECONDSINADAY; // add one day (in seconds) to the timestamp
 		time_info = localtime(&start_of_month);
 	}
 
